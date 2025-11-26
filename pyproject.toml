@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "hbot-quant-lab"
+version = "1.0.0"
+description = "HBOT Quantitative Trading Research Lab"
+authors = ["Falnakon Team"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.1.0"
+numpy = "^1.24.0"
+polars = "^0.19.0"
+ta = "^0.11.0"
+scikit-learn = "^1.3.0"
+xgboost = "^2.0.0"
+lightgbm = "^4.1.0"
+torch = "^2.1.0"
+matplotlib = "^3.8.0"
+plotly = "^5.18.0"
+mlflow = "^2.8.0"
+pyyaml = "^6.0.1"
+loguru = "^0.7.2"
+jupyter = "^1.0.0"
+numba = "^0.58.0"
+vectorbt = "^0.25.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+black = "^23.11.0"
+flake8 = "^6.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+

@@ -1,0 +1,64 @@
+# Model Configuration
+models:
+  # XGBoost
+  xgboost:
+    enabled: true
+    params:
+      objective: "multi:softprob"
+      num_class: 3
+      max_depth: 6
+      learning_rate: 0.1
+      n_estimators: 100
+      subsample: 0.8
+      colsample_bytree: 0.8
+      min_child_weight: 3
+      gamma: 0.1
+      reg_alpha: 0.1
+      reg_lambda: 1.0
+      random_state: 42
+      n_jobs: -1
+  
+  # LightGBM
+  lightgbm:
+    enabled: true
+    params:
+      objective: "multiclass"
+      num_class: 3
+      boosting_type: "gbdt"
+      num_leaves: 31
+      learning_rate: 0.1
+      n_estimators: 100
+      subsample: 0.8
+      colsample_bytree: 0.8
+      min_child_samples: 20
+      reg_alpha: 0.1
+      reg_lambda: 1.0
+      random_state: 42
+      n_jobs: -1
+  
+  # Training
+  training:
+    test_size: 0.2
+    validation_size: 0.1
+    walk_forward:
+      enabled: true
+      train_window: 252  # days
+      test_window: 63    # days
+      step: 21           # days
+  
+  # Evaluation
+  evaluation:
+    metrics:
+      - "sharpe_ratio"
+      - "sortino_ratio"
+      - "max_drawdown"
+      - "win_rate"
+      - "profit_factor"
+      - "average_rr"
+  
+  # MLflow
+  mlflow:
+    enabled: true
+    tracking_uri: "file:./mlruns"
+    experiment_name: "hbot_quant_lab"
+
