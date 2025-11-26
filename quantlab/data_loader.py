@@ -195,6 +195,19 @@ class DataLoader:
         Resample OHLCV data to a new timeframe.
         
         Args:
+            df: Source DataFrame with OHLCV data
+            new_timeframe: Target timeframe ('1m', '5m', '15m', '30m', '1h', '4h', '1d')
+            
+        Returns:
+            Resampled DataFrame with OHLCV data
+            
+        Raises:
+            ValueError: If timeframe is not supported
+        """
+        """
+        Resample OHLCV data to a new timeframe.
+        
+        Args:
             df: Source DataFrame
             new_timeframe: Target timeframe
             

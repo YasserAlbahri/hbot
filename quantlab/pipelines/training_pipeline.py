@@ -131,6 +131,34 @@ class TrainingPipeline:
         
         # Step 6: Train model
         logger.info(f"Step 6: Training {model_type} model...")
+        
+        # Log configs and git info to MLflow before training
+        if self.model_config.get('mlflow', {}).get('enabled', True):
+            try:
+                import mlflow
+                from ..utils import get_project_root
+                import subprocess
+                
+                # Log config files as artifacts
+                config_dir = get_project_root() / 'configs'
+                for config_file in ['data_config.yaml', 'features_config.yaml', 'model_config.yaml']:
+                    config_path = config_dir / config_file
+                    if config_path.exists():
+                        mlflow.log_artifact(str(config_path), 'configs')
+                
+                # Log git commit
+                try:
+                    git_commit = subprocess.check_output(
+                        ['git', 'rev-parse', 'HEAD'],
+                        cwd=get_project_root(),
+                        stderr=subprocess.DEVNULL
+                    ).decode().strip()
+                    mlflow.log_param('git_commit', git_commit)
+                except:
+                    pass
+            except:
+                pass
+        
         if model_type == 'xgboost':
             model, train_metrics = self.model_trainer.train_xgboost(X_train, y_train, X_val, y_val)
         elif model_type == 'lightgbm':
