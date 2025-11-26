@@ -74,6 +74,18 @@ class ModelTrainer:
             # Log parameters
             if self.mlflow_config.get('enabled'):
                 mlflow.log_params(model_params)
+                
+                # Log git commit
+                try:
+                    from ..utils import get_project_root
+                    git_commit = subprocess.check_output(
+                        ['git', 'rev-parse', 'HEAD'],
+                        cwd=get_project_root(),
+                        stderr=subprocess.DEVNULL
+                    ).decode().strip()
+                    mlflow.log_param('git_commit', git_commit)
+                except:
+                    pass
             
             # Train model
             model = XGBClassifier(**model_params)
@@ -143,6 +155,18 @@ class ModelTrainer:
             # Log parameters
             if self.mlflow_config.get('enabled'):
                 mlflow.log_params(model_params)
+                
+                # Log git commit
+                try:
+                    from ..utils import get_project_root
+                    git_commit = subprocess.check_output(
+                        ['git', 'rev-parse', 'HEAD'],
+                        cwd=get_project_root(),
+                        stderr=subprocess.DEVNULL
+                    ).decode().strip()
+                    mlflow.log_param('git_commit', git_commit)
+                except:
+                    pass
             
             # Train model
             model = LGBMClassifier(**model_params)
@@ -207,4 +231,6 @@ class ModelTrainer:
 
 
 from contextlib import nullcontext
+import subprocess
+from pathlib import Path
 

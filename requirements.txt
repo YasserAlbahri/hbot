@@ -28,6 +28,14 @@ jupyter>=1.0.0
 numba>=0.58.0
 vectorbt>=0.25.0
 
-# Development
+# Testing & Quality
 pytest>=7.4.0
+pytest-cov>=4.1.0
+pandera>=0.18.0
+flake8>=6.1.0
+mypy>=1.7.0
+types-PyYAML>=6.0.0
+
+# Development
 black>=23.11.0
+line_profiler>=4.1.0
