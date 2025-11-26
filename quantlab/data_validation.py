@@ -137,3 +137,4 @@ def validate_features_schema(features_df: pd.DataFrame) -> bool:
     logger.debug("Features schema validation passed")
     return True
 
+

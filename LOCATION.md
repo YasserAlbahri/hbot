@@ -52,3 +52,4 @@ python -c "from quantlab.pipelines.training_pipeline import TrainingPipeline; pr
 
 **تم النقل بنجاح! ✅**
 
+

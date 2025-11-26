@@ -110,3 +110,4 @@ class TestBacktester:
         assert isinstance(results, pd.DataFrame)
         assert 'equity' in results.columns
 
+

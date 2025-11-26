@@ -79,3 +79,4 @@ class TestLabeling:
         if total_labeled > 10:
             assert tp_count > 0 or sl_count > 0
 
+

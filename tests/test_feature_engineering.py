@@ -112,3 +112,4 @@ class TestFeatureEngineering:
         assert 'volume_sma_20' in features_df.columns
         assert 'volume_ratio' in features_df.columns
 
+

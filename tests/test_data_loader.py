@@ -92,3 +92,4 @@ class TestDataLoader:
         assert isinstance(data['15m'], pd.DataFrame)
         assert isinstance(data['1h'], pd.DataFrame)
 
+
